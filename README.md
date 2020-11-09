@@ -3,7 +3,7 @@
 ## Overview
 This project is part of the Udacity Azure ML Nanodegree.
 In this project, we build and optimize an Azure ML pipeline using the Python SDK and a provided Scikit-learn model.
-This model is then compared to an Azure AutoML run. Updated on 28 Oct 2020
+This model is then compared to an Azure AutoML run.
 
 ## Summary
 **In 1-2 sentences, explain the problem statement: e.g "This dataset contains data about... we seek to predict..."**
@@ -11,19 +11,22 @@ This dataset contains data about bank marketing. We seek to predict if a custome
 So, our target column or label column will be 'y' which we going to predict.
 
 **In 1-2 sentences, explain the solution: e.g. "The best performing model was a ..."**
+The best performing model was "VotingEnsemble" with accuracy of 0.9143. The model "StackEnsemble" which has a metric "0.9134" is also closed to "VotingEnsemble."
 
 ## Scikit-learn Pipeline
 **Explain the pipeline architecture, including data, hyperparameter tuning, and classification algorithm.**
-
-**What are the benefits of the parameter sampler you chose?**
-
-**What are the benefits of the early stopping policy you chose?**
 I loaded the data from the provided source url with TabularDatasetFactory. The data is then cleaned and normalized with training set of 20 percent and
-test set of 80%.It used the LogisticRegression to train the model.
+test set of 80 percent.It used the LogisticRegression to train the model.
 
-As we are going to predict for discrete, I am using the discreate hyper parameter.
+As we are going to predict for Discrete, I am using the discreate hyper parameter.
 I am using RandomParameterSampling with choice of max iteration from 10,20 or 30. and for RegularizationValue of C uniform from 0.5 to 1.
 I am using BanditPolicy as the early stopping policy with slack_factor=0.1,evaluation_interval=1 and delay_evaluation=5.
+
+**What are the benefits of the parameter sampler you chose?**
+For the RegularizationValue I choose uniform(0.5,1) and for Max iteration it will choose from (10,20,30).
+
+**What are the benefits of the early stopping policy you chose?**
+I used BanditPolicy as the early stopping policy. On this one , the early termination is based on slack factor and evaluation interval. 
 
 
 
